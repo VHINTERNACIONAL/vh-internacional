@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VH INTERNACIONAL</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#000;color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;position:fixed;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(15px);z-index:1000}
+nav a{margin:0 15px;text-decoration:none;color:#aaa}
+nav a:hover{color:#fff}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle,#111,#000)}
+.hero h2{font-size:50px;animation:fadeIn 1.2s ease}
+.btn{margin-top:15px;padding:10px 20px;border:none;border-radius:25px;background:#fff;color:#000;cursor:pointer;transition:0.3s}
+.btn:hover{transform:scale(1.1)}
+section{padding:100px 40px}
+.catalogo{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.producto{background:#111;border-radius:15px;padding:20px;text-align:center;transition:0.4s}
+.producto:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 10px 30px rgba(255,255,255,0.1)}
+.producto img{width:100%;border-radius:10px;transition:0.4s}
+.producto img:hover{transform:scale(1.05)}
+.precio{margin:10px 0;font-weight:bold}
+.cart-btn{position:fixed;top:20px;right:20px;background:#fff;color:#000;padding:10px;border-radius:50%;cursor:pointer}
+.cart{position:fixed;right:-350px;top:0;width:300px;height:100%;background:#111;padding:20px;transition:0.3s}
+.cart.active{right:0}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:15px;border-radius:50px;text-decoration:none}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>VH INTERNACIONAL</h1>
+<nav>
+<a href="#catalogo">Celulares</a>
+<a href="#perfumes">Perfumes</a>
+</nav>
+</header>
+
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
+<a class="whatsapp" href="https://wa.me/51922223756?text=Hola%20quiero%20información" target="_blank">💬</a>
+
+<div class="cart" id="cart">
+<h2>Pedido</h2>
+<div id="cart-items"></div>
+<p>Total: S/ <span id="total">0</span></p>
+<button class="btn" onclick="comprar()">Comprar</button>
+</div>
+
+<div class="hero">
+<h2>Equipos Premium Importados</h2>
+<button class="btn" onclick="scrollToSection('catalogo')">Ver productos</button>
+</div>
+
+<section id="catalogo">
+<h2>Celulares</h2>
+<div class="catalogo">
+
+<div class="producto"><h3>iPhone 17 Pro Max</h3><p class="precio">S/ 5500</p><button class="btn" onclick="addToCart('iPhone 17 Pro Max',5500)">Añadir</button></div>
+<div class="producto"><h3>iPhone 17 Pro</h3><p class="precio">S/ 5200</p><button class="btn" onclick="addToCart('iPhone 17 Pro',5200)">Añadir</button></div>
+<div class="producto"><h3>iPhone 17</h3><p class="precio">S/ 5000</p><button class="btn" onclick="addToCart('iPhone 17',5000)">Añadir</button></div>
+<div class="producto"><h3>Samsung S26 Ultra</h3><p class="precio">S/ 5500</p><button class="btn" onclick="addToCart('Samsung S26 Ultra',5500)">Añadir</button></div>
+
+<div class="producto"><h3>iPhone 14 Pro Max 256GB (Negro)</h3><p class="precio">S/ 2459</p><button class="btn" onclick="addToCart('iPhone 14 Pro Max 256GB',2459)">Añadir</button></div>
+<div class="producto"><h3>iPhone 15 Pro 256GB (Natural)</h3><p class="precio">S/ 2759</p><button class="btn" onclick="addToCart('iPhone 15 Pro 256GB',2759)">Añadir</button></div>
+<div class="producto"><h3>iPhone 16 Pro 128GB (Dorado)</h3><p class="precio">S/ 2850</p><button class="btn" onclick="addToCart('iPhone 16 Pro 128GB',2850)">Añadir</button></div>
+<div class="producto"><h3>iPhone 16 Pro 256GB (Negro)</h3><p class="precio">S/ 3100</p><button class="btn" onclick="addToCart('iPhone 16 Pro 256GB',3100)">Añadir</button></div>
+
+</div>
+</section>
+
+<section id="perfumes">
+<h2>Perfumes Árabes</h2>
+<div class="catalogo">
+
+<div class="producto"><h3>Yara Tous</h3><p class="precio">S/ 110 (mayor 105)</p><button class="btn" onclick="addToCart('Yara Tous',110)">Añadir</button></div>
+<div class="producto"><h3>Yara Candy</h3><p class="precio">S/ 110</p><button class="btn" onclick="addToCart('Yara Candy',110)">Añadir</button></div>
+<div class="producto"><h3>Malachite</h3><p class="precio">S/ 110</p><button class="btn" onclick="addToCart('Malachite',110)">Añadir</button></div>
+<div class="producto"><h3>Asad</h3><p class="precio">S/ 110</p><button class="btn" onclick="addToCart('Asad',110)">Añadir</button></div>
+<div class="producto"><h3>Yara Elixir</h3><p class="precio">S/ 135</p><button class="btn" onclick="addToCart('Yara Elixir',135)">Añadir</button></div>
+<div class="producto"><h3>Asad Elixir</h3><p class="precio">S/ 135</p><button class="btn" onclick="addToCart('Asad Elixir',135)">Añadir</button></div>
+
+</div>
+</section>
+
+<script>
+let cart=[];
+function toggleCart(){document.getElementById('cart').classList.toggle('active')}
+function addToCart(n,p){cart.push({n,p});renderCart()}
+function renderCart(){let c=document.getElementById('cart-items');let t=0;c.innerHTML='';cart.forEach(i=>{c.innerHTML+=`<div>${i.n} - S/ ${i.p}</div>`;t+=i.p});document.getElementById('total').innerText=t}
+function comprar(){if(cart.length===0){alert('Vacío');return}let m='Hola quiero comprar:%0A';cart.forEach(i=>{m+=`- ${i.n} S/ ${i.p}%0A`});window.open(`https://wa.me/51922223756?text=${m}`)}
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+</script>
+
+
+
+<!-- PANEL SIMPLE PARA SUBIR IMÁGENES -->
+<div style="position:fixed;bottom:80px;left:20px;background:#111;padding:15px;border-radius:10px;">
+  <p style="font-size:12px;color:#aaa">Subir imagen</p>
+  <input type="file" accept="image/*" onchange="cargarImagen(event)">
+</div>
+
+<script>
+function cargarImagen(event){
+  const file = event.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const productos = document.querySelectorAll('.producto');
+    productos.forEach(p => {
+      let img = p.querySelector('img');
+      if(!img){
+        img = document.createElement('img');
+        img.style.width = '100%';
+        img.style.borderRadius = '10px';
+        p.prepend(img);
+      }
+      img.src = e.target.result;
+    });
+  };
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
